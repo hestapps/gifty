@@ -6,7 +6,6 @@ target 'Gifty' do
   use_frameworks!
 
   # Pods for Gifty
-  pod "QRCode"
 
   target 'GiftyTests' do
     inherit! :search_paths

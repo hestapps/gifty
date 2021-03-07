@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import QRCode
 
 struct HomeView: View {
     
@@ -179,8 +178,15 @@ struct CardDetailsView: View {
                 }
                 .padding()
                 
-                if let img = card.qrCodeImage {
-                    img
+                if let img = card.pdf417CodeImg {
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 12)
+                            .frame(maxWidth: UIScreen.main.bounds.width * 0.8)
+                        
+                        img
+                            .resizable()
+                            .frame(maxWidth: UIScreen.main.bounds.width * 0.7)
+                    }
                 }
             }
         }
@@ -405,11 +411,47 @@ struct Card: Codable, Hashable {
         return String(format: "%.2f", balance)
     }
     
-    var qrCodeImage: Image? {
-        guard let convertableImage = QRCode(String(cardNumber))?.image else {
+    var pdf417CodeImg: Image? {
+        guard let img = generatePDF417Barcode() else {
             return nil
         }
-        return Image(uiImage: convertableImage)
+        
+        return Image(uiImage: img)
+    }
+    
+    private func generatePDF417Barcode() -> UIImage? {
+        let ciContext = CIContext()
+        let cardNumberStr = String(cardNumber)
+        let data = cardNumberStr.data(using: String.Encoding.ascii)
+        
+        guard let filter = CIFilter(name: "CIPDF417BarcodeGenerator") else {
+            return nil
+        }
+        
+        filter.setValue(data, forKey: "inputMessage")
+        let transformer = CGAffineTransform(scaleX: 3, y: 3)
+        
+        guard let ciImage = filter.outputImage?.transformed(by: transformer) else {
+            return nil
+        }
+        
+        guard let cgImage = ciContext.createCGImage(ciImage, from: ciImage.extent) else {
+            return nil
+        }
+        
+        return UIImage(cgImage: cgImage)
+        
+        
+//        if let filter = CIFilter(name: "CIPDF417BarcodeGenerator") {
+//            filter.setValue(data, forKey: "inputMessage")
+//            let transform = CGAffineTransform(scaleX: 2, y: 2)
+//
+//            if let output = filter.outputImage?.transformed(by: transform) {
+//                return UIImage(ciImage: output)
+//            }
+//        }
+//
+//        return nil
     }
     
     func hash(into hasher: inout Hasher) {
