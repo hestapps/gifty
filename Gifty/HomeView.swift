@@ -46,6 +46,7 @@ struct HomeView: View {
                                                 .padding(.top, 12)
                                                 .padding(.trailing, 20)
                                                 .font(.system(size: 20, weight: .bold))
+                                                .foregroundColor(.white)
                                         }
                                     }
                                     
@@ -53,6 +54,7 @@ struct HomeView: View {
                                     
                                     HStack {
                                         Text("**** \(card.securedCardNumber)")
+                                            .foregroundColor(.white)
                                         Spacer()
                                         ZStack {
                                             Text(card.merchant)
@@ -70,22 +72,28 @@ struct HomeView: View {
                 }
                 .padding(.leading)
                 
-                HStack {
-                    Image(systemName: "plus.circle.fill")
-                        .resizable()
-                        .foregroundColor(.blue)
-                        .frame(width: 26, height: 26)
+                ZStack {
+                    Rectangle()
+                        .fill(Color(UIColor.systemBackground))
+                        .edgesIgnoringSafeArea(.all)
+                        .frame(height: 60)
                     
-                    Text("Add Card")
-                        .font(.system(size: 18, weight: .semibold))
-                        .foregroundColor(.blue)
-                }
-                .offset(y: -30)
-                .onTapGesture {
-                    isAddCardViewPresenting.toggle()
-                }
-                .sheet(isPresented: $isAddCardViewPresenting) {
-                    AddCardView(isAddCardViewPresented: $isAddCardViewPresenting)
+                    HStack {
+                        Image(systemName: "plus.circle.fill")
+                            .resizable()
+                            .foregroundColor(.blue)
+                            .frame(width: 26, height: 26)
+                        
+                        Text("Add Card")
+                            .font(.system(size: 18, weight: .semibold))
+                            .foregroundColor(.blue)
+                    }
+                    .onTapGesture {
+                        isAddCardViewPresenting.toggle()
+                    }
+                    .sheet(isPresented: $isAddCardViewPresenting) {
+                        AddCardView(isAddCardViewPresented: $isAddCardViewPresenting, refetchCards: homeViewModel.fetchCards)
+                    }
                 }
             }
             .navigationBarTitle("Wallet", displayMode: .inline)
@@ -215,6 +223,7 @@ struct AddCardView: View {
     
     @State fileprivate var showErrorSavingCardAlert = false
     @Binding var isAddCardViewPresented: Bool
+    var refetchCards: () -> ()
     
     var body: some View {
         VStack {
@@ -262,6 +271,7 @@ struct AddCardView: View {
                 let ifSaved = saveCard()
                 guard !ifSaved else {
                     isAddCardViewPresented.toggle()
+                    refetchCards()
                     return
                 }
                 showErrorSavingCardAlert.toggle()
