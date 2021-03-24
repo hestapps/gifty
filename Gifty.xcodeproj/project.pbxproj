@@ -9,6 +9,14 @@
 /* Begin PBXBuildFile section */
 		0C9536C5A68F94DA4D3036A4 /* Pods_Gifty.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B7A7CFE3F3D07BC1C2FEA33 /* Pods_Gifty.framework */; };
 		187F6EA30BA629EE6D76DD68 /* Pods_GiftyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F66DE7B56EE329BE7B008445 /* Pods_GiftyTests.framework */; };
+		39B5753F260ABACD00D7FB01 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B5753E260ABACD00D7FB01 /* StringExtension.swift */; };
+		39B57544260ABAF300D7FB01 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B57543260ABAF300D7FB01 /* Card.swift */; };
+		39B57549260ABB3200D7FB01 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B57548260ABB3200D7FB01 /* UserDefaultsManager.swift */; };
+		39B5754E260ABB6300D7FB01 /* Cards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B5754D260ABB6300D7FB01 /* Cards.swift */; };
+		39B57553260ABBAC00D7FB01 /* AddCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B57552260ABBAC00D7FB01 /* AddCardView.swift */; };
+		39B57558260ABBE600D7FB01 /* DefaultTapStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B57557260ABBE600D7FB01 /* DefaultTapStyle.swift */; };
+		39B57560260ABC0300D7FB01 /* CardDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B5755F260ABC0300D7FB01 /* CardDetailsView.swift */; };
+		39B57565260ABC1B00D7FB01 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B57564260ABC1B00D7FB01 /* HomeViewModel.swift */; };
 		39DA596625EF518B004F3A0A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39DA596525EF518B004F3A0A /* AppDelegate.swift */; };
 		39DA596825EF518B004F3A0A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39DA596725EF518B004F3A0A /* SceneDelegate.swift */; };
 		39DA596A25EF518B004F3A0A /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39DA596925EF518B004F3A0A /* HomeView.swift */; };
@@ -41,6 +49,14 @@
 /* Begin PBXFileReference section */
 		0ABE0989B0A923EC791CD535 /* Pods-Gifty.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gifty.release.xcconfig"; path = "Target Support Files/Pods-Gifty/Pods-Gifty.release.xcconfig"; sourceTree = "<group>"; };
 		33C0A20D70B0196F04804CC4 /* Pods-GiftyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GiftyTests.release.xcconfig"; path = "Target Support Files/Pods-GiftyTests/Pods-GiftyTests.release.xcconfig"; sourceTree = "<group>"; };
+		39B5753E260ABACD00D7FB01 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		39B57543260ABAF300D7FB01 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		39B57548260ABB3200D7FB01 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
+		39B5754D260ABB6300D7FB01 /* Cards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cards.swift; sourceTree = "<group>"; };
+		39B57552260ABBAC00D7FB01 /* AddCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardView.swift; sourceTree = "<group>"; };
+		39B57557260ABBE600D7FB01 /* DefaultTapStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTapStyle.swift; sourceTree = "<group>"; };
+		39B5755F260ABC0300D7FB01 /* CardDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailsView.swift; sourceTree = "<group>"; };
+		39B57564260ABC1B00D7FB01 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		39DA596225EF518B004F3A0A /* Gifty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gifty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		39DA596525EF518B004F3A0A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		39DA596725EF518B004F3A0A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -93,6 +109,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		39B5753B260ABAA900D7FB01 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				39DA596925EF518B004F3A0A /* HomeView.swift */,
+				39B57552260ABBAC00D7FB01 /* AddCardView.swift */,
+				39B5755F260ABC0300D7FB01 /* CardDetailsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		39B5753C260ABAB500D7FB01 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				39B57557260ABBE600D7FB01 /* DefaultTapStyle.swift */,
+				39B57564260ABC1B00D7FB01 /* HomeViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		39B5753D260ABABF00D7FB01 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				39B5753E260ABACD00D7FB01 /* StringExtension.swift */,
+				39B57543260ABAF300D7FB01 /* Card.swift */,
+				39B57548260ABB3200D7FB01 /* UserDefaultsManager.swift */,
+				39B5754D260ABB6300D7FB01 /* Cards.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		39DA595925EF518B004F3A0A = {
 			isa = PBXGroup;
 			children = (
@@ -118,9 +164,11 @@
 		39DA596425EF518B004F3A0A /* Gifty */ = {
 			isa = PBXGroup;
 			children = (
+				39B5753D260ABABF00D7FB01 /* Models */,
+				39B5753C260ABAB500D7FB01 /* ViewModels */,
+				39B5753B260ABAA900D7FB01 /* Views */,
 				39DA596525EF518B004F3A0A /* AppDelegate.swift */,
 				39DA596725EF518B004F3A0A /* SceneDelegate.swift */,
-				39DA596925EF518B004F3A0A /* HomeView.swift */,
 				39DA596E25EF518E004F3A0A /* Assets.xcassets */,
 				39DA597325EF518E004F3A0A /* LaunchScreen.storyboard */,
 				39DA597625EF518E004F3A0A /* Info.plist */,
@@ -176,7 +224,6 @@
 				F4334C6203868A7961FE551E /* Pods-GiftyTests.debug.xcconfig */,
 				33C0A20D70B0196F04804CC4 /* Pods-GiftyTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -382,10 +429,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				39B57560260ABC0300D7FB01 /* CardDetailsView.swift in Sources */,
 				39DA596625EF518B004F3A0A /* AppDelegate.swift in Sources */,
+				39B57558260ABBE600D7FB01 /* DefaultTapStyle.swift in Sources */,
+				39B57544260ABAF300D7FB01 /* Card.swift in Sources */,
 				39DA596D25EF518B004F3A0A /* Gifty.xcdatamodeld in Sources */,
+				39B5754E260ABB6300D7FB01 /* Cards.swift in Sources */,
+				39B57549260ABB3200D7FB01 /* UserDefaultsManager.swift in Sources */,
+				39B57565260ABC1B00D7FB01 /* HomeViewModel.swift in Sources */,
+				39B5753F260ABACD00D7FB01 /* StringExtension.swift in Sources */,
 				39DA596825EF518B004F3A0A /* SceneDelegate.swift in Sources */,
 				39DA596A25EF518B004F3A0A /* HomeView.swift in Sources */,
+				39B57553260ABBAC00D7FB01 /* AddCardView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
